@@ -1,0 +1,18 @@
+version: '3'
+
+services: 
+  pptv:
+    image: mobtitude/vpn-pptp
+    restart: always
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - ./pptp/chap-secrets:/etc/ppp/chap-secrets
+  x-ui:
+    image: enwaiax/x-ui
+    restart: always
+    privileged: true
+    network_mode: "host"    
+    volumes:
+      - ./x-ui/db/:/etc/x-ui/
+      - ./x-ui/cert/:/root/cert/
