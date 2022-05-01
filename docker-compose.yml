@@ -1,14 +1,14 @@
 version: '3'
 
 services: 
-  pptv:
-    image: mobtitude/vpn-pptp
+  ipsec:
+    image: hwdsl2/ipsec-vpn-server
     restart: always
     network_mode: "host"
+    env_file: ./ipsec/vpn.env
     privileged: true
-    volumes:
-      - ./pptp/chap-secrets:/etc/ppp/chap-secrets
-  x-ui:
+
+  xui:
     image: enwaiax/x-ui
     restart: always
     privileged: true
